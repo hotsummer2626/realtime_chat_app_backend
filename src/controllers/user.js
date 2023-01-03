@@ -16,4 +16,17 @@ const setAvatar = async (req, res, next) => {
   }
 };
 
-module.exports = { setAvatar };
+const getAllUsers = async (req, res, next) => {
+  try {
+    let users = await User.find().exec();
+    users = users.map((user) => {
+      delete user._doc.password;
+      return user
+    });
+    return res.json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { setAvatar, getAllUsers };
