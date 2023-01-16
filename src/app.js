@@ -23,26 +23,25 @@ const server = app.listen(PORT, () => {
     console.log(`server listening on port ${PORT}`);
 });
 
-const io = socket(server, {
-    cors: {
-        // origin: 'http://localhost:3000',
-        origin: 'https://61.69.192.26:3000',
-        // origin: process.env.SOCKET_URL,
-        credentials: true,
-    },
-});
+// const io = socket(server, {
+//     cors: {
+//         origin: 'http://localhost:3000',
+//         origin: process.env.SOCKET_URL,
+//         credentials: true,
+//     },
+// });
 
-global.onlineUsers = new Map();
+// global.onlineUsers = new Map();
 
-io.on("connection", (socket) => {
-    socket.on("add-user", (userId) => {
-        onlineUsers.set(userId, socket.id);
-    });
+// io.on("connection", (socket) => {
+//     socket.on("add-user", (userId) => {
+//         onlineUsers.set(userId, socket.id);
+//     });
 
-    socket.on("send-msg", (data) => {
-        const receiverSocket = onlineUsers.get(data.to);
-        if (receiverSocket) {
-            socket.to(receiverSocket).emit("receive-msg", data.message);
-        }
-    });
-});
+//     socket.on("send-msg", (data) => {
+//         const receiverSocket = onlineUsers.get(data.to);
+//         if (receiverSocket) {
+//             socket.to(receiverSocket).emit("receive-msg", data.message);
+//         }
+//     });
+// });
