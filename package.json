@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "pm2 start src/app.js --name realtimeChat",
+    "poststart": "pm2 log realtimeChat",
+    "stop": "pm2 stop realtimeChat",
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +21,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.6.2",
     "morgan": "^1.10.0",
+    "pm2": "^5.2.2",
     "socket.io": "^4.5.4"
   },
   "devDependencies": {
