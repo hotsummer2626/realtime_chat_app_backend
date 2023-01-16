@@ -25,7 +25,9 @@ const server = app.listen(PORT, () => {
 
 const io = socket(server, {
     cors: {
-        origin: process.env.SOCKET_URL,
+        // origin: 'http://localhost:3000',
+        origin: 'https://61.69.192.26:3000',
+        // origin: process.env.SOCKET_URL,
         credentials: true,
     },
 });
